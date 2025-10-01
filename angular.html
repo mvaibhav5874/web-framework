@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Name Display</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="nameCtrl">
+
+    <h2>User Name Input</h2>
+
+    <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" ng-model="firstName">
+    </div>
+    <br>
+    <div>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" ng-model="lastName">
+    </div>
+    <hr>
+    <div>
+        <input type="checkbox" id="showNameCheck" ng-model="showName">
+        <label for="showNameCheck">Allow Displaying Full Name</label>
+    </div>
+    <hr>
+
+    <div ng-show="showName">
+        <h3>Your Full Name is:</h3>
+        <h1>{{ firstName + ' ' + lastName }}</h1>
+    </div>
+
+    <script>
+        // 1. Create the AngularJS module
+        var app = angular.module('myApp', []);
+
+        // 2. Create the controller
+        app.controller('nameCtrl', function($scope) {
+            // 3. Set default values for the model
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+            $scope.showName = true; // Set checkbox to be checked by default
+        });
+    </script>
+
+</body>
+</html>
